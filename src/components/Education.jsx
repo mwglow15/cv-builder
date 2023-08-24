@@ -1,9 +1,7 @@
-import { useState } from "react"
-
-export default function Education(props) {
+export default function Education() {
   return(
     <>
-      
+
     </>
   )
 }

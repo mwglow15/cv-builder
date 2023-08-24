@@ -1,6 +1,4 @@
-import { useState } from "react"
-
-export default function WorkExperience(props) {
+export default function WorkExperience() {
   return(
     <>
       
