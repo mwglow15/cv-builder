@@ -1,11 +1,12 @@
-export default function EditButton(props) {
-  if(props.editState) {
+/* eslint-disable react/prop-types */
+export default function EditButton({ editState, handleEditToggle }) {
+  if(editState) {
     return(
-      <button onClick={props.onClick}>Submit</button>
+      <button onClick={handleEditToggle}>Submit</button>
     )
   } else {
     return(
-      <button onClick={props.onClick}>Edit</button>
+      <button onClick={handleEditToggle}>Edit</button>
     )
   }
 }

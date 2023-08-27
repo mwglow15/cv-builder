@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import PersonalInfo from './PersonalInfo.jsx'
 import Education from './Education.jsx'
@@ -21,33 +22,31 @@ export default function Resume() {
     }
   }
 
-  
-
-  function ToggleFormView() {
-    if (editOn) {
-      return(
-        <>
-          <PersonalInfoForm personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}/>
-          <WorkExperienceForm workExperienceInfo={workExperienceInfo} setWorkExperienceInfo={setWorkExperienceInfo}/>
-          <EducationForm educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>
-        </>
-      )
-    } else {
-      return(
-        <>
-          <PersonalInfo personalInfo={personalInfo} />
-          <WorkExperience workExperienceInfo={workExperienceInfo} />
-          <Education educationInfo={educationInfo} />
-        </>
-      )
-    }
-  }
-
-  return(
+  return (
     <>
-      <EditButton editState={editOn} onClick={handleEditToggle} />
+      <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
 
-      <ToggleFormView />
+      <ToggleFormView editOn={editOn} personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}/>
     </>
   )
+}
+
+function ToggleFormView({ editOn, personalInfo, setPersonalInfo }) {
+  if (editOn) {
+    return(
+      <>
+        <PersonalInfoForm personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}/>
+        {/* <WorkExperienceForm workExperienceInfo={workExperienceInfo} setWorkExperienceInfo={setWorkExperienceInfo}/>
+        <EducationForm educationInfo={educationInfo} setEducationInfo={setEducationInfo}/> */}
+      </>
+    )
+  } else {
+    return (
+      <>
+        <PersonalInfo personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}/>
+        {/* <WorkExperience workExperienceInfo={workExperienceInfo} />
+        <Education educationInfo={educationInfo} /> */}
+      </>
+    )
+  }
 }
