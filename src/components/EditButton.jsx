@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export default function EditButton({ editState, handleEditToggle }) {
   if(editState) {
     return(
