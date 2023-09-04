@@ -35,6 +35,7 @@ const exampleData = {
     id: uuidv4(),
   },{
     jobTitle: "Junior Engineer",
+    location: "The Big City",
     company: "Big Tech",
     startDate: "Jun 2020",
     endDate: "Dec 2022",

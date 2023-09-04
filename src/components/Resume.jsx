@@ -38,6 +38,7 @@ export default function Resume() {
     const id = jobSection.id
     const updatedField = e.target.id
 
+    // Looks for the specific job and field that has been updated and sets the new value
     let updatedJob = workExperienceInfo.map(job => {
       if(job.id === id) job[updatedField] = value
       return job
@@ -54,6 +55,7 @@ export default function Resume() {
     const id = degreeSection.id
     const updatedField = e.target.id
 
+    // Looks for the specific degree and entry field that was updated and sets the new value
     let updatedDegree = educationInfo.map(degree => {
       if(degree.id === id) degree[updatedField] = value
       return degree
@@ -66,35 +68,30 @@ export default function Resume() {
     <>
       <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
 
-      <ToggleFormView 
-        editOn={editOn}
-        personalInfo={personalInfo}
-        handlePersonalInfoChange={handlePersonalInfoChange}
-        workExperienceInfo={workExperienceInfo}
-        handleWorkExperienceChange={handleWorkExperienceChange}
-        educationInfo={educationInfo}
-        handleEducationChange={handleEducationChange}/>
-        
-    </>
-  )
-}
-
-function ToggleFormView({ editOn, personalInfo, handlePersonalInfoChange, workExperienceInfo, handleWorkExperienceChange, educationInfo, handleEducationChange }) {
-  if (editOn) {
-    return(
+    {editOn ? (
       <>
-        <PersonalInfoForm personalInfo={personalInfo} handleChange={handlePersonalInfoChange}/>
-        <WorkExperienceForm workExperienceInfo={workExperienceInfo} handleChange={handleWorkExperienceChange}/>
-       <EducationForm educationInfo={educationInfo} handleChange={handleEducationChange}/>
+        <PersonalInfoForm 
+          personalInfo={personalInfo} 
+          handleChange={handlePersonalInfoChange}
+        />
+        <WorkExperienceForm 
+          workExperienceInfo={workExperienceInfo} 
+          handleChange={handleWorkExperienceChange}
+        />
+        <EducationForm 
+          educationInfo={educationInfo}
+          handleChange={handleEducationChange}
+        />
       </>
-    )
-  } else {
-    return (
+    ) : (
       <>
         <PersonalInfo personalInfo={personalInfo}/>
         <WorkExperience workExperience={workExperienceInfo} />
         <Education educationInfo={educationInfo}/>
       </>
     )
-  }
+
+    }
+  </>
+  ) 
 }
