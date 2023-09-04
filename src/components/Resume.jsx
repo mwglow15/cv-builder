@@ -7,27 +7,13 @@ import EditButton from './EditButton.jsx'
 import PersonalInfoForm from "./personal/PersonalInfoForm.jsx"
 import WorkExperienceForm from "./work/WorkExperienceForm.jsx"
 import EducationForm from "./education/EducationForm.jsx"
+import exampleData from "./exampleData.js"
 
 export default function Resume() {
   const [editOn, setEditOn] = useState(true)
-  const [personalInfo, setPersonalInfo] = useState('')
-  const [educationInfo, setEducationInfo] = useState()
-  const [workExperienceInfo, setWorkExperienceInfo] = useState([{
-                                                                  jobTitle: "Junior Engineer",
-                                                                  location: "The Big City",
-                                                                  company: "Big Tech",
-                                                                  startDate: "Jun 2020",
-                                                                  endDate: "Dec 2022",
-                                                                  description: "This was a great first job. blah blah blah.  Stuff I did was awesome.  I made stuff and led a small team to make stuff that was cool.",
-                                                                  id: uuidv4(),
-                                                                },{
-                                                                  jobTitle: "Junior Engineer",
-                                                                  company: "Big Tech",
-                                                                  startDate: "Jun 2020",
-                                                                  endDate: "Dec 2022",
-                                                                  description: "This was a great first job. blah blah blah.  Stuff I did was awesome.  I made stuff and led a small team to make stuff that was cool.",
-                                                                  id: uuidv4(),
-                                                                },])
+  const [personalInfo, setPersonalInfo] = useState(exampleData.personalInfo)
+  const [educationInfo, setEducationInfo] = useState(exampleData.education)
+  const [workExperienceInfo, setWorkExperienceInfo] = useState(exampleData.workExperience)
 
   // Toggles and sets state for the edit state
   function handleEditToggle() {
@@ -73,8 +59,9 @@ export default function Resume() {
       return degree
     })
 
-
+    setEducationInfo(updatedDegree)
   }
+
   return (
     <>
       <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
