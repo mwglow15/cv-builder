@@ -6,6 +6,7 @@ export default function EducationForm({ educationInfo, handleChange }) {
       <p>Education</p>
       <form className="section-form education-form">
         {
+          // returns a filled out form section for each degree in state
           educationInfo.map((degree, index) => {
             return(<EducationFormSections info={degree} key={degree.id} handleChange={handleChange} index={index}></EducationFormSections>)
           })

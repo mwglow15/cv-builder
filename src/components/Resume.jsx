@@ -15,7 +15,9 @@ export default function Resume() {
   const [educationInfo, setEducationInfo] = useState(exampleData.education)
   const [workExperienceInfo, setWorkExperienceInfo] = useState(exampleData.workExperience)
 
+  //
   // Toggles and sets state for the edit state
+  //
   function handleEditToggle() {
     if (editOn) {
       setEditOn(false)
@@ -24,11 +26,19 @@ export default function Resume() {
     }
   }
 
-  // Spreads the existing personalInfo data and adds the new value to state
+  //
+  // Receives the change event from the personal info form elements
+  // Adds new value to personal info state
+  //
   function handlePersonalInfoChange(e){
     e.preventDefault()
     setPersonalInfo({ ...personalInfo, [e.target.id]: e.target.value } ) // 
   }
+
+  //
+  // Receives the change event from the work experience form elements
+  // Finds the changed job and field and adds new value to work experience state
+  //
 
   function handleWorkExperienceChange(e) {
     e.preventDefault()
@@ -47,6 +57,10 @@ export default function Resume() {
     setWorkExperienceInfo(updatedJob)
   }
 
+  //
+  // Receives the change event from the education form elements
+  // Finds the changed degree and field and adds new value to education state
+  //
   function handleEducationChange(e) {
     e.preventDefault()
 
@@ -64,11 +78,15 @@ export default function Resume() {
     setEducationInfo(updatedDegree)
   }
 
+  // 
+  // JSX for building the high level sections of the CV Builder
+  // Also handles the toggling between edit state and read-only state
+  //
   return (
     <>
       <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
 
-    {editOn ? (
+    {editOn ? ( // If editOn is true, display the edit forms
       <>
         <PersonalInfoForm 
           personalInfo={personalInfo} 
@@ -83,15 +101,12 @@ export default function Resume() {
           handleChange={handleEducationChange}
         />
       </>
-    ) : (
+    ) : ( // If editOn is false, display the read-only Resume
       <>
         <PersonalInfo personalInfo={personalInfo}/>
         <WorkExperience workExperience={workExperienceInfo} />
         <Education educationInfo={educationInfo}/>
       </>
-    )
-
-    }
-  </>
-  ) 
-}
+  )}
+    </>
+)}
