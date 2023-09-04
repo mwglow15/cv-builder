@@ -1,4 +1,4 @@
-import WorkFormSections from "./WorkFormSections";
+import WorkFormSections from "./WorkFormSections"
 
 export default function WorkExperienceForm({ workExperienceInfo, handleChange }) {
   return(
@@ -7,7 +7,7 @@ export default function WorkExperienceForm({ workExperienceInfo, handleChange })
       <form className="section-form work-form">
         {
           workExperienceInfo.map((job, index) => {
-            return (<WorkFormSections info={job} key={job.id} handleChange={handleChange} index={index}></WorkFormSections>)
+            return(<WorkFormSections info={job} key={job.id} handleChange={handleChange} index={index}></WorkFormSections>)
           })
         }
       </form>

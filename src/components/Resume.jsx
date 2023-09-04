@@ -1,19 +1,20 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from "uuid";
-import PersonalInfo from './PersonalInfo.jsx'
-import Education from './Education.jsx'
-import WorkExperience from './WorkExperience.jsx'
+import PersonalInfo from './personal/PersonalInfo.jsx'
+import Education from './education/Education.jsx'
+import WorkExperience from './work/WorkExperience.jsx'
 import EditButton from './EditButton.jsx'
-import PersonalInfoForm from "./PersonalInfoForm.jsx"
-import WorkExperienceForm from "./WorkExperienceForm.jsx"
-import EducationForm from "./EducationForm.jsx"
+import PersonalInfoForm from "./personal/PersonalInfoForm.jsx"
+import WorkExperienceForm from "./work/WorkExperienceForm.jsx"
+import EducationForm from "./education/EducationForm.jsx"
 
 export default function Resume() {
   const [editOn, setEditOn] = useState(true)
   const [personalInfo, setPersonalInfo] = useState('')
-  const [educationInfo, setEducationInfo] = useState('')
+  const [educationInfo, setEducationInfo] = useState()
   const [workExperienceInfo, setWorkExperienceInfo] = useState([{
                                                                   jobTitle: "Junior Engineer",
+                                                                  location: "The Big City",
                                                                   company: "Big Tech",
                                                                   startDate: "Jun 2020",
                                                                   endDate: "Dec 2022",
@@ -45,6 +46,7 @@ export default function Resume() {
 
   function handleWorkExperienceChange(e) {
     e.preventDefault()
+
     const value = e.target.value
     const jobSection = e.target.closest('.work-form-section')
     const id = jobSection.id
@@ -58,22 +60,45 @@ export default function Resume() {
     setWorkExperienceInfo(updatedJob)
   }
 
+  function handleEducationChange(e) {
+    e.preventDefault()
+
+    const value = e.target.value
+    const degreeSection = e.target.closest('.education-form-section')
+    const id = degreeSection.id
+    const updatedField = e.target.id
+
+    let updatedDegree = educationInfo.map(degree => {
+      if(degree.id === id) degree[updatedField] = value
+      return degree
+    })
+
+
+  }
   return (
     <>
       <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
 
-      <ToggleFormView editOn={editOn} personalInfo={personalInfo} handlePersonalInfoChange={handlePersonalInfoChange} workExperienceInfo={workExperienceInfo} handleWorkExperienceChange={handleWorkExperienceChange}/>
+      <ToggleFormView 
+        editOn={editOn}
+        personalInfo={personalInfo}
+        handlePersonalInfoChange={handlePersonalInfoChange}
+        workExperienceInfo={workExperienceInfo}
+        handleWorkExperienceChange={handleWorkExperienceChange}
+        educationInfo={educationInfo}
+        handleEducationChange={handleEducationChange}/>
+        
     </>
   )
 }
 
-function ToggleFormView({ editOn, personalInfo, handlePersonalInfoChange, workExperienceInfo, handleWorkExperienceChange }) {
+function ToggleFormView({ editOn, personalInfo, handlePersonalInfoChange, workExperienceInfo, handleWorkExperienceChange, educationInfo, handleEducationChange }) {
   if (editOn) {
     return(
       <>
         <PersonalInfoForm personalInfo={personalInfo} handleChange={handlePersonalInfoChange}/>
         <WorkExperienceForm workExperienceInfo={workExperienceInfo} handleChange={handleWorkExperienceChange}/>
-       {/* <EducationForm educationInfo={educationInfo} setEducationInfo={setEducationInfo}/> */}
+       <EducationForm educationInfo={educationInfo} handleChange={handleEducationChange}/>
       </>
     )
   } else {
@@ -81,7 +106,7 @@ function ToggleFormView({ editOn, personalInfo, handlePersonalInfoChange, workEx
       <>
         <PersonalInfo personalInfo={personalInfo}/>
         <WorkExperience workExperience={workExperienceInfo} />
-        {/* <Education educationInfo={educationInfo}/> */}
+        <Education educationInfo={educationInfo}/>
       </>
     )
   }
