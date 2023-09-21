@@ -1,11 +1,13 @@
-export default function EditButton({ editState, handleEditToggle }) {
-  if(editState) {
+import "../styles/editButton.css"
+
+export default function EditButton({ editOn, handleEditToggle }) {
+  if(editOn) {
     return(
-      <button onClick={handleEditToggle}>Submit</button>
+      <button onClick={handleEditToggle}>Generate CV</button>
     )
   } else {
     return(
-      <button onClick={handleEditToggle}>Edit</button>
+      <button onClick={handleEditToggle}>Edit Contents</button>
     )
   }
 }

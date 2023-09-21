@@ -21,7 +21,7 @@ const exampleData = {
     location: "In the City",
     degree: "Science",
     startDate: "Aug 2020",
-    endDate: "May ",
+    endDate: "May 2024",
     id: uuidv4(),
   },],
 
@@ -34,12 +34,12 @@ const exampleData = {
     description: "This was a great first job. blah blah blah.  Stuff I did was awesome.  I made stuff and led a small team to make stuff that was cool.",
     id: uuidv4(),
   },{
-    jobTitle: "Junior Engineer",
-    location: "The Big City",
-    company: "Big Tech",
-    startDate: "Jun 2020",
-    endDate: "Dec 2022",
-    description: "This was a great first job. blah blah blah.  Stuff I did was awesome.  I made stuff and led a small team to make stuff that was cool.",
+    jobTitle: "Senior Engineer",
+    location: "The Bigger City",
+    company: "Bigger Tech",
+    startDate: "Jan 2022",
+    endDate: "Present",
+    description: "This was an even better job. yada yada yada.  Stuff I did was even awesomer.  I made even better stuff and led a large team to make stuff that was even cooler.",
     id: uuidv4(),
   },],
 }

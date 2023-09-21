@@ -1,30 +1,18 @@
 import { useState } from "react"
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import PersonalInfo from './personal/PersonalInfo.jsx'
 import Education from './education/Education.jsx'
 import WorkExperience from './work/WorkExperience.jsx'
-import EditButton from './EditButton.jsx'
 import PersonalInfoForm from "./personal/PersonalInfoForm.jsx"
 import WorkExperienceForm from "./work/WorkExperienceForm.jsx"
 import EducationForm from "./education/EducationForm.jsx"
 import exampleData from "./exampleData.js"
+import "../styles/resume.css"
 
-export default function Resume() {
-  const [editOn, setEditOn] = useState(true)
+export default function Resume({ editOn }) {
   const [personalInfo, setPersonalInfo] = useState(exampleData.personalInfo)
   const [educationInfo, setEducationInfo] = useState(exampleData.education)
   const [workExperienceInfo, setWorkExperienceInfo] = useState(exampleData.workExperience)
-
-  //
-  // Toggles and sets state for the edit state
-  //
-  function handleEditToggle() {
-    if (editOn) {
-      setEditOn(false)
-    } else {
-      setEditOn(true)
-    }
-  }
 
   //
   // Receives the change event from the personal info form elements
@@ -84,10 +72,8 @@ export default function Resume() {
   //
   return (
     <>
-      <EditButton editState={editOn} handleEditToggle={handleEditToggle} />
-
-    {editOn ? ( // If editOn is true, display the edit forms
-      <>
+      {editOn ? ( // If editOn is true, display the edit forms
+      <div className="resume-edit-container resume">
         <PersonalInfoForm 
           personalInfo={personalInfo} 
           handleChange={handlePersonalInfoChange}
@@ -100,13 +86,13 @@ export default function Resume() {
           educationInfo={educationInfo}
           handleChange={handleEducationChange}
         />
-      </>
+      </div>
     ) : ( // If editOn is false, display the read-only Resume
-      <>
+      <div className="resume-view-container resume">
         <PersonalInfo personalInfo={personalInfo}/>
         <WorkExperience workExperience={workExperienceInfo} />
         <Education educationInfo={educationInfo}/>
-      </>
-  )}
+      </div>
+    )}
     </>
 )}

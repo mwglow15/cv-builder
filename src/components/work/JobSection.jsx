@@ -3,8 +3,7 @@ export default function JobSection({ jobInfo }) {
     <div className='job-section'>
       <div>{jobInfo.jobTitle}</div>
       <div>{jobInfo.company}</div>
-      <div>{jobInfo.startDate}</div>
-      <div>{jobInfo.endDate}</div>
+      {jobInfo.endDate ? (<div>{jobInfo.startDate} - {jobInfo.endDate}</div>) : (<div>{jobInfo.startDate}</div>)}
       <div>{jobInfo.description}</div>
     </div>
   )

@@ -1,0 +1,9 @@
+.resume {
+  width: 66vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  width: (250px, 66vw, 750px);
+  border: 2px darkgrey solid;
+}
