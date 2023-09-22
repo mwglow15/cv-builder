@@ -1,12 +1,10 @@
 export default function EducationSection({ degreeInfo }) {
   return(
     <div className='degree-section'>
-      <p className="heading">Education</p>
-      <div>{degreeInfo.school}</div>
+      <div className="school-name">{degreeInfo.school}</div>
+      <div className="degree">{degreeInfo.degree}</div>
       <div>{degreeInfo.location}</div>
-      <div>{degreeInfo.degree}</div>
-      <div>{degreeInfo.startDate}</div>
-      <div>{degreeInfo.endDate}</div>
+      {degreeInfo.endDate ? (<div className="school-date date">{degreeInfo.startDate} - {degreeInfo.endDate}</div>) : (<div className="school-date date">{degreeInfo.startDate}</div>)}
     </div>
   )
 }

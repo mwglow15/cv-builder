@@ -1,0 +1,10 @@
+.education-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.school-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+}

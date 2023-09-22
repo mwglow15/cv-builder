@@ -4,7 +4,7 @@ export default function EducationFormSections({ info, handleChange, index }) {
 
   return(
     <div className="form-section education-form-section" id={info.id}>
-      <p>School #{index + 1}</p>
+      <p className="subheading">School #{index + 1}</p>
       <InputField
         type='input'
         id='school'

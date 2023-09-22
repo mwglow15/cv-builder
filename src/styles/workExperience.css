@@ -1,7 +1,19 @@
-.work-experience {
+.work-experience,
+.section-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.subheading {
+  font-size: 1.1rem;
+  border-bottom: 1px black solid;
 }
 
 .job-section {

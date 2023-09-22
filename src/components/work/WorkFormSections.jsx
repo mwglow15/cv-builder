@@ -4,7 +4,7 @@ export default function WorkFormSections({ info, handleChange, index }) {
 
   return(
     <div className="form-section work-form-section" id={info.id}>
-      <p>Job #{index + 1}</p>
+      <p className="subheading">Job #{index + 1}</p>
       <InputField
         type='input'
         id='jobTitle'
