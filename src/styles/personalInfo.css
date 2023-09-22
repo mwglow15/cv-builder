@@ -4,8 +4,6 @@
   flex-direction: column;
   align-items: center;
   gap: 7.5px;
-  border-bottom: 2px black solid;
-  padding-bottom: 10px;
 }
 
 .name {

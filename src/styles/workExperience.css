@@ -1,0 +1,22 @@
+.work-experience {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job-section {
+  /* padding: 10px 0px; */
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.date {
+  color: rgb(139, 138, 138)
+}
+
+.job-description {
+  margin-top: 10px;
+}

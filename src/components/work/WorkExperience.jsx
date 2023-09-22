@@ -1,4 +1,5 @@
 import JobSection from './JobSection'
+import "../../styles/workExperience.css"
 
 export default function WorkExperience({ workExperience }) {
   return(
