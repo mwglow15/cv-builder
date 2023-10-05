@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import PersonalInfo from './personal/PersonalInfo.jsx'
 import Education from './education/Education.jsx'
 import WorkExperience from './work/WorkExperience.jsx'
@@ -7,6 +7,7 @@ import PersonalInfoForm from "./personal/PersonalInfoForm.jsx"
 import WorkExperienceForm from "./work/WorkExperienceForm.jsx"
 import EducationForm from "./education/EducationForm.jsx"
 import exampleData from "./exampleData.js"
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/resume.css"
 
 export default function Resume({ editOn }) {
@@ -24,10 +25,46 @@ export default function Resume({ editOn }) {
   }
 
   //
+  // Add a new education field
+  //
+  function newEducation(e){
+    e.preventDefault()
+    const newEducationObj = {
+      school: "",
+      location: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      id: uuidv4(),
+    }
+
+    //console.log([ ...educationInfo, newEducationObj ])
+    setEducationInfo([ ...educationInfo, newEducationObj ])
+  }
+
+  //
+  // Add a new work field
+  //
+  function newWorkExperience(e){
+    e.preventDefault()
+    const newWorkObj = {
+      jobTitle: "",
+      location: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      id: uuidv4(),
+    }
+
+    //console.log([ ...workExperienceInfo, newWorkObj ])
+    setWorkExperienceInfo([ ...workExperienceInfo, newWorkObj ])
+  }
+
+  //
   // Receives the change event from the work experience form elements
   // Finds the changed job and field and adds new value to work experience state
   //
-
   function handleWorkExperienceChange(e) {
     e.preventDefault()
 
@@ -81,10 +118,12 @@ export default function Resume({ editOn }) {
         <WorkExperienceForm 
           workExperienceInfo={workExperienceInfo} 
           handleChange={handleWorkExperienceChange}
+          newWorkExperience={newWorkExperience}
         />
         <EducationForm 
           educationInfo={educationInfo}
           handleChange={handleEducationChange}
+          newEducation={newEducation}
         />
       </div>
     ) : ( // If editOn is false, display the read-only Resume

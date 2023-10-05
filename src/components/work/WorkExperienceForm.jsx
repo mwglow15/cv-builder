@@ -1,7 +1,8 @@
 import WorkFormSections from "./WorkFormSections"
+import CreateFormButton from "../CreateFormButton"
 import '../../styles/workExperience.css'
 
-export default function WorkExperienceForm({ workExperienceInfo, handleChange }) {
+export default function WorkExperienceForm({ workExperienceInfo, handleChange, newWorkExperience }) {
   return(
     <>
       <p className='heading'>Work Experience</p>
@@ -12,6 +13,7 @@ export default function WorkExperienceForm({ workExperienceInfo, handleChange })
           })
         }
       </form>
+      <CreateFormButton onclick={newWorkExperience} text='Experience' />
     </>
   )
 }

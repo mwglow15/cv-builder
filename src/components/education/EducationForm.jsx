@@ -1,6 +1,7 @@
+import CreateFormButton from "../CreateFormButton"
 import EducationFormSections from "./EducationFormSections"
 
-export default function EducationForm({ educationInfo, handleChange }) {
+export default function EducationForm({ educationInfo, handleChange, newEducation }) {
   return(
     <>
       <p className='heading'>Education</p>
@@ -12,6 +13,7 @@ export default function EducationForm({ educationInfo, handleChange }) {
           })
         }
       </form>
+      <CreateFormButton onclick={newEducation} text='Education' />
     </>
   )
 }
